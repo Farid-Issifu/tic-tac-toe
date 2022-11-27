@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: 'outfit', sans-serif;
+}
+
+:root {
+    --border-radius: 10px;
+    --color-block-bg: #1f3641;
+    --color-shadow: rgb(20, 33, 42);
+    --color-cement: #a8bfc9;
+    --color-cement-shadow: rgba(172, 190, 200, 0.8);
+    --color-skyblue: #31c3bd;
+    --color-skyblue-shadow: #118c87;
+    --color-yellow: #f2b137;
+    --color-yellow-shadow: #cc8b13;
+}
+
+body {
+    background-color: #1a2a33;
+    color: var(--color-block-bg);
+    font-weight: 800;
+}
+
+noscript {
+    background-color: rgba(0, 0, 0, 0.692);
+    color: rgb(222, 222, 222);
+    display: inline-block;
+    padding: 15px;
+    border: 2px dashed red;
+}
+main {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+/* ---------- Pages common styles ---------- */
+#start,
+#game {
+    width: 80vw;
+    min-width: 300px;
+    max-width: 70vh;
+    margin: 15px;
+}
+
+.hide {
+    display: none !important;
+}
+
+/* ---------------- Game page ----------------- */
+
+.game-details,
+.turn-indicator,
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+#game .logo {
+    cursor: pointer;
+}
+
+.turn-indicator {
+    background-color: var(--color-block-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 6px 0px 0px var(--color-shadow);
+    color: var(--color-cement);
+    padding: 5px 10px;
+}
+.turn-indicator .icon {
+    height: 20px;
+}
+
+.restart {
+    background-color: var(--color-cement);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 6px 0px 0px var(--color-cement-shadow);
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* ---------- Game Board ---------- */
+.board {
+    height: 80vw;
+    min-height: 300px;
+    max-height: 70vh;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin: 25px 0;
+}
+
+.cell {
+    align-items: center;
+    background-color: var(--color-block-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 8px 0px 0px var(--color-shadow);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    transition: transform 150ms ease-in, box-shadow 150ms ease-in;
+}
+.cell img {
+    pointer-events: none;
+}
+
+.x-score,
+.o-score,
+.tie-score {
+    padding: 10px 15px;
+    width: 8ch;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+.score-of {
+    font-size: 11px;
+    color: #1a2a33
+}
+
+.score {
+    font-size: 20px;
+}
+
+.x-score {
+    background-color: var(--color-skyblue);
+}
+
+.tie-score {
+    background-color: var(--color-cement);
+}
+
+.o-score {
+    background-color: var(--color-yellow);
+}
+
+/* ----------   Animations on Game page --------- */
+
+.clicked-cell {
+    transform: translateY(6px);
+    box-shadow: 0px 4px 0px 0px var(--color-shadow);
+}
+
+/* ------------ Start page ------------- */
+
+#start {
+    text-align: center;
+}
+
+.player-picker {
+    background-color: var(--color-block-bg);
+    border-radius: 15px;
+    box-shadow: 0px 5px 0px 0px var(--color-shadow);
+    width: 100%;
+    padding: 25px;
+    margin: 25px 0;
+}
+
+.player-picker p {
+    color: var(--color-cement);
+}
+
+.hint {
+    opacity: 0.4;
+}
+
+.picker-switch {
+    background-color: var(--color-shadow);
+    border-radius: var(--border-radius);
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    margin: 15px 0;
+}
+
+.hint{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    opacity: .5;
+}
+
+.pick-x,
+.pick-o {
+    width: 50%;
+    border-radius: var(--border-radius);
+    padding: 12px;
+    cursor: pointer;
+}
+
+.picker-switch .icon {
+    width: 35px;
+}
+
+.picker-switch .selected {
+    background-color: var(--color-cement);
+}
+
+.vs-cpu,
+.vs-player {
+    width: 100%;
+    margin-bottom: 25px;
+}
+.new-game button.vs-player {
+    background-color: var(--color-skyblue);
+    box-shadow: 0px 5px 0px 0px var(--color-skyblue-shadow);
+}
+
+/* ------- Common styles between BUTTONS in modals and start page ------ */
+
+.new-game button.vs-cpu,
+.new-game button.vs-player,
+.take-action .negative-action,
+.take-action .positive-action {
+    font-weight: 800;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 15px;
+    color: var(--color-block-bg);
+    cursor: pointer;
+}
+
+/* Yellow button */
+.new-game button.vs-cpu,
+.take-action .positive-action {
+    background-color: var(--color-yellow);
+    box-shadow: 0px 5px 0px 0px var(--color-yellow-shadow);
+}
+
+/* Blue button */
+.take-action .negative-action {
+    background-color: var(--color-cement);
+    box-shadow: 0px 5px 0px 0px var(--color-cement-shadow);
+}
+
+/* ----- Common styles between Modals ------ */
+
+#modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+/* --- RESULT modal --- */
+#result-modal,
+#restart-modal {
+    background-color: var(--color-block-bg);
+    width: 100vw;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+#modal-container h2 {
+    color: var(--color-skyblue);
+    text-transform: uppercase;
+}
+
+.take-action {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+}

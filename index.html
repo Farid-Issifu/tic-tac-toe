@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="src/style.css" />
+        <script src="src/app.js" defer></script>
+        <title>tic tac toe</title>
+    </head>
+    <body>
+        <main>
+            <!-- Start page -->
+            <div id="start">
+                <img src="assets/logo.svg" alt="" />
+                <div class="player-picker">
+                    <p>PICK PLAYER 1'S MARK</p>
+                    <div class="picker-switch">
+                        <div class="pick-x">
+                            <img
+                                src="assets/icon-x-silver.svg"
+                                class="icon"
+                                alt=""
+                            />
+                        </div>
+                        <div class="pick-o selected">
+                            <img
+                                src="assets/icon-o-dark.svg"
+                                class="icon"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+                    <p class="hint">REMEMBER : X GOES FIRST</p>
+                </div>
+                <div class="new-game">
+                    <button class="vs-cpu">NEW GAME (VS CPU)</button>
+                    <button class="vs-player">NEW GAME (VS PLAYER)</button>
+                </div>
+            </div>
+
+            <!-- Game page -->
+            <div id="game" class="hide">
+                <div class="game-details">
+                    <img src="assets/logo.svg" class="logo" alt="" />
+                    <div class="turn-indicator">
+                        <img src="assets/icon-o.svg" class="icon" />
+                        TURN
+                    </div>
+                    <button class="restart">
+                        <img src="assets/icon-restart.svg" />
+                    </button>
+                </div>
+                <!-- Board component -->
+                <div class="board">
+                    <div class="cell r1 c1 d1">
+                        <img />
+                    </div>
+                    <div class="cell r1 c2">
+                        <img />
+                    </div>
+                    <div class="cell r1 c3 d2">
+                        <img />
+                    </div>
+                    <div class="cell r2 c1">
+                        <img />
+                    </div>
+                    <div class="cell r2 c2 d1 d2">
+                        <img />
+                    </div>
+                    <div class="cell r2 c3">
+                        <img />
+                    </div>
+                    <div class="cell r3 c1 d2">
+                        <img />
+                    </div>
+                    <div class="cell r3 c2">
+                        <img />
+                    </div>
+                    <div class="cell r3 c3 d1">
+                        <img />
+                    </div>
+                </div>
+                <!-- scoreboard -->
+                <div class="scoreboard">
+                    <div class="x-score">
+                        <p class="score-of">X (You)</p>
+                        <p class="score"></p>
+                    </div>
+                    <div class="tie-score">
+                        <p class="score-of">Ties</p>
+                        <p class="score"></p>
+                    </div>
+                    <div class="o-score">
+                        <p class="score-of">O (CPU)</p>
+                        <p class="score"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!----------- Modals -------------->
+            <div id="modal-container" class="hide">
+                <!-- RESULTS Modal -->
+                <div id="result-modal" class="hide">
+                    <h2>You Won!</h2>
+                    <div class="take-action">
+                        <button class="negative-action">QUIT</button>
+                        <button class="positive-action">NEXT ROUND</button>
+                    </div>
+                </div>
+
+                <!-- RESTART Modal -->
+                <div id="restart-modal" class="hide">
+                    <h2>RESTART GAME?</h2>
+                    <div class="take-action">
+                        <button class="negative-action">NO, CANCEL</button>
+                        <button class="positive-action">YES, RESTART</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
