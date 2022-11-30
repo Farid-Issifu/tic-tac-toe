@@ -1,123 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="src/style.css" />
-        <script src="src/app.js" defer></script>
-        <title>tic tac toe</title>
-    </head>
-    <body>
-        <main>
-            <!-- Start page -->
-            <div id="start">
-                <img src="assets/logo.svg" alt="" />
-                <div class="player-picker">
-                    <p>PICK PLAYER 1'S MARK</p>
-                    <div class="picker-switch">
-                        <div class="pick-x">
-                            <img
-                                src="assets/icon-x-silver.svg"
-                                class="icon"
-                                alt=""
-                            />
-                        </div>
-                        <div class="pick-o selected">
-                            <img
-                                src="assets/icon-o-dark.svg"
-                                class="icon"
-                                alt=""
-                            />
-                        </div>
-                    </div>
-                    <p class="hint">REMEMBER : X GOES FIRST</p>
-                </div>
-                <div class="new-game">
-                    <button class="vs-cpu">NEW GAME (VS CPU)</button>
-                    <button class="vs-player">NEW GAME (VS PLAYER)</button>
-                </div>
-            </div>
 
-            <!-- Game page -->
-            <div id="game" class="hide">
-                <div class="game-details">
-                    <img src="assets/logo.svg" class="logo" alt="" />
-                    <div class="turn-indicator">
-                        <img src="assets/icon-o.svg" class="icon" />
-                        TURN
-                    </div>
-                    <button class="restart">
-                        <img src="assets/icon-restart.svg" />
-                    </button>
-                </div>
-                <!-- Board component -->
-                <div class="board">
-                    <div class="cell r1 c1 d1">
-                        <img />
-                    </div>
-                    <div class="cell r1 c2">
-                        <img />
-                    </div>
-                    <div class="cell r1 c3 d2">
-                        <img />
-                    </div>
-                    <div class="cell r2 c1">
-                        <img />
-                    </div>
-                    <div class="cell r2 c2 d1 d2">
-                        <img />
-                    </div>
-                    <div class="cell r2 c3">
-                        <img />
-                    </div>
-                    <div class="cell r3 c1 d2">
-                        <img />
-                    </div>
-                    <div class="cell r3 c2">
-                        <img />
-                    </div>
-                    <div class="cell r3 c3 d1">
-                        <img />
-                    </div>
-                </div>
-                <!-- scoreboard -->
-                <div class="scoreboard">
-                    <div class="x-score">
-                        <p class="score-of">X (You)</p>
-                        <p class="score"></p>
-                    </div>
-                    <div class="tie-score">
-                        <p class="score-of">Ties</p>
-                        <p class="score"></p>
-                    </div>
-                    <div class="o-score">
-                        <p class="score-of">O (CPU)</p>
-                        <p class="score"></p>
-                    </div>
-                </div>
-            </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="./Style/index.css">
+  <title>Frontend Mentor | Tic Tac Toe</title>
+</head>
 
-            <!----------- Modals -------------->
-            <div id="modal-container" class="hide">
-                <!-- RESULTS Modal -->
-                <div id="result-modal" class="hide">
-                    <h2>You Won!</h2>
-                    <div class="take-action">
-                        <button class="negative-action">QUIT</button>
-                        <button class="positive-action">NEXT ROUND</button>
-                    </div>
-                </div>
+<body>
+  <main>
 
-                <!-- RESTART Modal -->
-                <div id="restart-modal" class="hide">
-                    <h2>RESTART GAME?</h2>
-                    <div class="take-action">
-                        <button class="negative-action">NO, CANCEL</button>
-                        <button class="positive-action">YES, RESTART</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </body>
+    <section class="new-game-menu" id="starter">
+      <div class="header-menu-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="32">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M8.562 1.634 16 9.073l7.438-7.439a3 3 0 0 1 4.243 0l2.685 2.685a3 3 0 0 1 0 4.243L22.927 16l7.439 7.438a3 3 0 0 1 0 4.243l-2.685 2.685a3 3 0 0 1-4.243 0L16 22.927l-7.438 7.439a3 3 0 0 1-4.243 0L1.634 27.68a3 3 0 0 1 0-4.243L9.073 16 1.634 8.562a3 3 0 0 1 0-4.243L4.32 1.634a3 3 0 0 1 4.243 0Z"
+              fill="#31C3BD" />
+            <path
+              d="M56.1 0c8.765 0 15.87 7.106 15.87 15.87 0 8.766-7.105 15.871-15.87 15.871-8.765 0-15.87-7.105-15.87-15.87C40.23 7.106 47.334 0 56.1 0Zm0 9.405a6.466 6.466 0 1 0 0 12.931 6.466 6.466 0 0 0 0-12.931Z"
+              fill="#F2B137" fill-rule="nonzero" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="choose-mark-container">
+        <h1>pick player 1's mark</h1>
+        <div class="choose-sign-wrapper">
+          <div class="cross" id="chooseCross">
+            <svg viewBox="0 0 64 64" width="32" height="32">
+              <path
+                d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+                fill="hsla(199, 24%, 73%, 1)" fill-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="circle" id="chooseCircle">
+            <svg viewBox="0 0 64 64" width="32" height="32">
+              <path
+                d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+                fill="hsla(199, 24%, 73%, 1)" fill-rule="evenodd" />
+            </svg>
+          </div>
+        </div>
+        <p>remember : x goes first</p>
+      </div>
+
+      <div class="button-container">
+        <button id="vsCpu">new game (vs cpu)</button>
+        <button id="players">new game (vs player)</button>
+      </div>
+    </section>
+
+    <!-- game page -->
+    <section class="game" id="game">
+
+      <!-- popup -->
+      <div class="result-popup" id="popup">
+        <div id="resultPopup">
+          <h4 id="resultDisplay">oh no, you lost...</h4>
+          <div class="take-round">
+
+            <svg viewBox="0 0 64 64" width="64" height="64" class="circle-win">
+              <path
+                d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+                fill="hsla(39, 88%, 58%, 1)" fill-rule="evenodd"></path>
+            </svg>
+
+            <svg viewBox="0 0 64 64" width="64" height="64" class="cross-win">
+              <path
+                d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+                fill="hsla(178, 60%, 48%, 1)" fill-rule="evenodd"></path>
+            </svg>
+            <h5 id="takeTheRound">take the round</h5>
+          </div>
+          <div class="popup-button">
+            <button id="quit">quit</button>
+            <button id="nextRound">next round</button>
+          </div>
+        </div>
+      </div>
+      <div class="quit-popup" id="quitPopup">
+        <h6>restart game</h6>
+        <div class="button-wrapper">
+          <button id="cancel">no cancel</button>
+          <button id="quitGame">yes, restart</button>
+        </div>
+      </div>
+      <!-- nav -->
+      <div class="nav-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="32">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M8.562 1.634 16 9.073l7.438-7.439a3 3 0 0 1 4.243 0l2.685 2.685a3 3 0 0 1 0 4.243L22.927 16l7.439 7.438a3 3 0 0 1 0 4.243l-2.685 2.685a3 3 0 0 1-4.243 0L16 22.927l-7.438 7.439a3 3 0 0 1-4.243 0L1.634 27.68a3 3 0 0 1 0-4.243L9.073 16 1.634 8.562a3 3 0 0 1 0-4.243L4.32 1.634a3 3 0 0 1 4.243 0Z"
+              fill="#31C3BD" />
+            <path
+              d="M56.1 0c8.765 0 15.87 7.106 15.87 15.87 0 8.766-7.105 15.871-15.87 15.871-8.765 0-15.87-7.105-15.87-15.87C40.23 7.106 47.334 0 56.1 0Zm0 9.405a6.466 6.466 0 1 0 0 12.931 6.466 6.466 0 0 0 0-12.931Z"
+              fill="#F2B137" fill-rule="nonzero" />
+          </g>
+        </svg>
+
+        <div class="turn">
+          <svg viewBox="0 0 64 64" width="20" height="20" class="cross-turn">
+            <path
+              d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+              fill="hsla(199, 24%, 73%, 1)" fill-rule="evenodd" />
+          </svg>
+          <svg viewBox="0 0 64 64" width="20" height="20" class="circle-turn">
+            <path
+              d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+              fill="hsla(199, 24%, 73%, 1)" fill-rule="evenodd" />
+            <h2>turn</h2>
+        </div>
+        <div id="restart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+            <path
+              d="M19.524 0h-1.88a.476.476 0 0 0-.476.499l.159 3.284A9.81 9.81 0 0 0 9.835.317C4.415.317-.004 4.743 0 10.167.004 15.597 4.406 20 9.835 20a9.796 9.796 0 0 0 6.59-2.536.476.476 0 0 0 .019-.692l-1.348-1.349a.476.476 0 0 0-.65-.022 6.976 6.976 0 0 1-9.85-.63 6.987 6.987 0 0 1 .63-9.857 6.976 6.976 0 0 1 10.403 1.348l-4.027-.193a.476.476 0 0 0-.498.476v1.881c0 .263.213.476.476.476h7.944A.476.476 0 0 0 20 8.426V.476A.476.476 0 0 0 19.524 0Z"
+              fill="#1F3641" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <div class="box" id="box00" boxIndex="0"></div>
+        <div class="box" id="box01" boxIndex="1"></div>
+        <div class="box" id="box02" boxIndex="2"> </div>
+        <div class="box" id="box03" boxIndex="3"> </div>
+        <div class="box" id="box04" boxIndex="4"></div>
+        <div class="box" id="box05" boxIndex="5"></div>
+        <div class="box" id="box06" boxIndex="6"></div>
+        <div class="box" id="box07" boxIndex="7"></div>
+        <div class="box" id="box08" boxIndex="8"></div>
+      </div>
+
+      <div class="result">
+        <div class="you">
+          <p class="dark" id="playerLeft">x(you)</p>
+          <h3 id="scoreCross">0</h3>
+        </div>
+        <div class="ties">
+          <p class="dark">ties</p>
+          <h3 id="scoreTies">0</h3>
+        </div>
+        <div class="cpu">
+          <p class="dark player02" id="playerRight">o (cpu)</p>
+          <h3 id="scoreCircle">0</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- overlay -->
+    <div class="overlay"></div>
+  </main>
+
+  <script src="./Js/index.js"></script>
+</body>
+
 </html>
