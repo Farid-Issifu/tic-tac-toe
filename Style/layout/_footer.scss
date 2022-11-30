@@ -1,0 +1,13 @@
+/*****align footer and set size and color*****/
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 20px auto;
+  color: rgb(201, 193, 193);
+
+  a,
+  a:visited {
+    color: rgb(141, 37, 37);
+    text-decoration: underline;
+  }
+}

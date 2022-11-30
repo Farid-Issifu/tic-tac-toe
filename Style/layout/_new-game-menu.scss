@@ -1,0 +1,149 @@
+/**********************************************************************/
+/*Main*/
+/**********************************************************************/
+
+.new-game-menu {
+  display: none;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: 0.3 ease-in-out;
+
+  .choose-mark-container {
+    width: 460px;
+    height: 197px;
+    background-color: $SemiDarkNavy;
+    border-radius: 15px;
+    padding: 24px;
+    margin: 40px auto 40px auto;
+    box-shadow: 0px 8px 0px 0px $DarkNavyBoxShadow;
+
+    /********************Media********************/
+    @media screen and (max-width: 500px) {
+      width: 327px;
+    }
+    /*********************************************/
+
+    .choose-sign-wrapper {
+      @include center;
+      width: 412px;
+      height: 72px;
+      border-radius: 10px;
+      background-color: $DarkNavy;
+      margin: 24px auto 17px auto;
+
+      /********************Media********************/
+      @media screen and (max-width: 500px) {
+        width: 279px;
+      }
+      /*********************************************/
+      .cross {
+        @include center;
+        width: 198px;
+        height: 54px;
+        border-radius: 15px;
+        cursor: pointer;
+
+        /*    &:hover {
+          background-color: $DarkNavyHover;
+        }
+*/
+        /********************Media********************/
+        @media screen and (max-width: 500px) {
+          width: 132px;
+        }
+        /*********************************************/
+      }
+      .circle {
+        @include center;
+        width: 198px;
+        height: 54px;
+        cursor: pointer;
+        border-radius: 15px;
+
+        /*     &:hover {
+          background-color: $DarkNavyHover;
+        }*/
+
+        /********************Media********************/
+        @media screen and (max-width: 500px) {
+          width: 132px;
+        }
+        /*********************************************/
+      }
+    }
+    p {
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    #vsCpu {
+      width: 460px;
+      height: 67px;
+      background-color: $lightYellow;
+      box-shadow: 0px 4px 0px 0px $YellowBoxShadow;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        background: $lightYellowHover;
+      }
+      &:active {
+        box-shadow: 0 0 0 0;
+        transform: translateY(4px);
+      }
+
+      /********************Media********************/
+      @media screen and (max-width: 500px) {
+        width: 327px;
+      }
+      /*********************************************/
+    }
+    #players {
+      width: 460px;
+      height: 67px;
+      background-color: $lightBlue;
+      box-shadow: 0px 4px 0px 0px $LightBlueBoxShadow;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        background: $lightBlueHover;
+      }
+      &:active {
+        box-shadow: 0 0 0 0;
+        transform: translateY(4px);
+      }
+      /********************Media********************/
+      @media screen and (max-width: 500px) {
+        width: 327px;
+      }
+      /*********************************************/
+    }
+  }
+}
+
+/********************interaction with javascript********************/
+
+//page
+.activate {
+  @include center;
+}
+//player choose cross
+.crossActive {
+  background-color: $Silver;
+
+  path {
+    fill: hsla(200, 32%, 15%, 1);
+  }
+}
+//player choose circle
+.circleActive {
+  background-color: $Silver;
+
+  path {
+    fill: hsla(200, 32%, 15%, 1);
+  }
+}

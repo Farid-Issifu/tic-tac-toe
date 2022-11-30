@@ -1,0 +1,102 @@
+/**********************************************************************/
+/*Main*/
+/**********************************************************************/
+
+.result-popup {
+  display: none;
+  position: absolute;
+  z-index: 6;
+  height: 228px;
+  width: 100%;
+  background-color: $SemiDarkNavy;
+  padding: 45px 0;
+
+  /********************Media********************/
+  @media screen and (max-width: 500px) {
+    gap: 40px 0 48px 0;
+  }
+  /*********************************************/
+  .take-round {
+    @include row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin: 13px 0;
+
+    /********************Media********************/
+    @media screen and (max-width: 500px) {
+      gap: 8px;
+    }
+    /*********************************************/
+
+    .circle-win {
+      display: none;
+      /********************Media********************/
+      @media screen and (max-width: 500px) {
+        width: 30px;
+        height: 30px;
+      }
+      /*********************************************/
+    }
+    .cross-win {
+      display: none;
+      /********************Media********************/
+      @media screen and (max-width: 500px) {
+        width: 30px;
+        height: 30px;
+      }
+      /*********************************************/
+    }
+
+    //interact with JS
+    .logoActivate {
+      display: block;
+    }
+  }
+
+  .popup-button {
+    @include row;
+    justify-content: center;
+    gap: 16px;
+
+    #quit {
+      @include center;
+      width: 76px;
+      height: 52px;
+      border-radius: 10px;
+      background-color: $Silver;
+      box-shadow: 0px 4px 0px 0px $SilverBoxShadow;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        background: $SilverHover;
+      }
+      &:active {
+        box-shadow: 0 0 0 0;
+        transform: translateY(4px);
+      }
+    }
+
+    #nextRound {
+      @include center;
+      width: 146px;
+      height: 52px;
+      border-radius: 10px;
+      background-color: $lightYellow;
+      box-shadow: 0px 4px 0px 0px $YellowBoxShadow;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        background: $lightYellowHover;
+      }
+      &:active {
+        box-shadow: 0 0 0 0;
+        transform: translateY(4px);
+      }
+    }
+  }
+}
+
+.activatePopup {
+  @include center;
+}
